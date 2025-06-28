@@ -1,123 +1,5 @@
 
-
-
-
-
-
-
-const display_jobs = (records)=> {
-    
-  
-      
-const Jobs_section = document.querySelector(".jobs-section")
-const InputTxt = document.querySelector(".input-txt")
-
-
-
-
-
-
-
-
-  
-
-
- 
-
-          const renderJobs = ()=> {
-            let jobHtml = ""
-              records.forEach((job)=> {
-              
-                            jobHtml += `
-                            <div class="job-div">
-                                <a href="component.html" class="details-btn">
-                                    <img src=${job.logo} alt="">
-                                        <div class="time-job-type">
-                                            <p>${job.postedAt}</p>
-                                            <li>${job.contract}</li>
-                                        </div>
-                                        <div class="position">
-                                            <h1>${job.position}</h1>
-                                            <p>${job.company}</p>
-                                        </div>
-                                        <strong>${job.location}</strong>
-                                        </a>
-                                </div>
-                            `
-                })
-
-          
-              
-            Jobs_section.innerHTML = jobHtml;
-            handleDetailsPage(records);
-            }
-
-
-
-
-           
-     const handleSearchingJobs = () => {
-    const Div_jobs = document.getElementsByClassName("job-div");
-    let inputValue = InputTxt.value.toLowerCase();
-    let matchFound = false;
-
-    if(inputValue === "") {
-        renderJobs();
-        return;
-    }
-
-
-    for (let i = 0; i < Div_jobs.length; i++) {
-        const jobText = Div_jobs[i].innerHTML.toLowerCase();
-        if (!jobText.includes(inputValue)) {
-            Div_jobs[i].style.display = "none";
-        } else {
-            Div_jobs[i].style.display = "block";
-            matchFound = true;
-        }
-    }
-
-    if (!matchFound) {
-         Jobs_section.innerHTML = `<h1>Not Found</h1>`;
-       setTimeout(()=> {
-          Jobs_section.innerHTML = `<h1></h1>`;
-                inputValue.value = ""
-                renderJobs()
-       },2000);
-       
-       
-
-    } else {
-      renderJobs()
-    }
-
-
-    return inputValue = ""
-};
-
-
-renderJobs()
-
-
-InputTxt.addEventListener("keyup", handleSearchingJobs);
-
-
-
-
-
- }
-
-
-
-
-
-
-
-
-
- 
-
- const handleDetailsPage = (data)=> {
+    const handleDetailsPage = (data)=> {
             const DivJobs = document.querySelectorAll(".job-div");
             const details_content = document.querySelector(".detials-content");
             const job_header = document.querySelector(".job-header");
@@ -197,15 +79,14 @@ InputTxt.addEventListener("keyup", handleSearchingJobs);
 
 
 
-
-
     
 fetch('data.json')
   .then(response => response.json())
   .then(data => {
 
-    display_jobs(data)
     
+    handleDetailsPage(data);
+
   })
   .catch(error => console.error('Error loading JSON:', error));
 
