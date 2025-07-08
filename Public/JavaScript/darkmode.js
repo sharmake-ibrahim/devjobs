@@ -1,20 +1,20 @@
-let lightmode = localStorage.getItem('lightmode')
+let darkmode = localStorage.getItem('darkmode')
 const themeSwitch = document.querySelector('.theme-switch')
 
-const enableLightmode = () => {
+const enableDarkmode = () => {
   document.body.classList.add('darkmode')
-  localStorage.setItem('lightmode', 'active')
+  localStorage.setItem('darkmode', 'active')
 }
 
-const disableLightmode = () => {
-  document.body.classList.remove('lightmode')
-  localStorage.setItem('lightmode', null)
+const disableDarkmode = () => {
+  document.body.classList.remove('darkmode')
+  localStorage.setItem('darkmode', null)
 }
 
-if(lightmode === "active") enableLightmode()
+if(darkmode === "active") enableDarkmode()
 
 themeSwitch.addEventListener("click", () => {
   console.log("cliked")
-  lightmode = localStorage.getItem('lightmode')
-  lightmode !== "active" ? enableLightmode() : disableLightmode()
+  darkmode = localStorage.getItem('darkmode')
+  darkmode !== "active" ? enableDarkmode() : disableDarkmode()
 })

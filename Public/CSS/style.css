@@ -1,5 +1,33 @@
-:root {
-     --blue-color: #5964E0;
+
+
+
+
+
+
+.job-div a {
+  text-decoration: none;
+
+}
+
+.darkmode {
+/* 
+     --white: #FFFFFF;
+      --blue-color: #5964E0;
+--light-violet:  #939BF4;
+--clr-txt: #9DAEC2;
+--midnight-clr: #121721;
+
+ 
+--violet:  #9e7f66;
+  
+
+   --light-grey: #F4F6F8;
+    --white: #FFFFFF;
+  
+    --grey-clr:  #9DAEC2;
+    --dark-grey: #6E8098; */
+
+         --blue-color: #5964E0;
 --light-violet:  #939BF4;
 --clr-txt: #9DAEC2;
 --midnight-clr: #121721;
@@ -13,19 +41,28 @@
   
     --grey-clr:  #9DAEC2;
     --dark-grey: #6E8098;
+
+    
+}
+
+
+:root {
   
+    --white: #19202D;
+    --midnight-clr:#F4F6F8;
+     --very-dark-blue: #FFFFFF;
+        --blue-color: #5964E0;
+    --light-violet:  #939BF4;
+  
+
+color-scheme: light;
 }
 
 
 
- .lightMode  {
-   --light-grey: #F4F6F8;
-    --white: #FFFFFF;
-  
-    --grey-clr:  #9DAEC2;
-    --dark-grey: #6E8098;
-}
-  
+
+
+
 
 
 
@@ -39,6 +76,10 @@
 
 
 
+.job-div p, li{
+  color: var(--light-violet);
+  padding-inline: 5px;
+}
 
 /* Header */
 
@@ -80,6 +121,8 @@ html, body {
 
 
 
+
+
 /* search css */
 
 .search-div{
@@ -98,7 +141,7 @@ html, body {
 .searchBox {
   display: flex;
   align-items: center;
-  max-width: 60%;
+  min-width: 60%;
 
 }
 
@@ -124,7 +167,7 @@ html, body {
   background-color: var(--very-dark-blue);
   border: none;
   outline: none;
-  color: white;
+  color: var(--white);
   font-size: 1rem;
 }
 
@@ -170,13 +213,24 @@ main .btn  {
  
 .job-div img {
   padding-top: -4rem;
-  margin-left: 1rem;
-  height: 30px;
-  width: 30px;
+
+  /* height: 20px;
+  width: 20px; */
+  padding: 5px 0;
   border-radius: 10px;
   object-fit: cover;
 }
 
+
+.job-logo {
+    margin-left: 1rem;
+  height: 40px;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  background-color: red;
+  border-radius: 10px;
+}
 .time-job-type {
   display: flex;
   align-items: center;
@@ -265,14 +319,7 @@ footer {
 /* Theme */
 
 
-.darkmode{
-  --base-color: .070b1d;
-  --base-variant: .101425;
-  --text-color: .ffffff;
-  --secondary-text: .a4a5b8;
-  --primary-color: .3a435d;
-  --accent-color: .0071ff;
-}
+
 *{
   margin: 0;
   padding: 0;
@@ -307,7 +354,7 @@ footer {
   width: 35px;
   border-radius: 50%;
   background-color:white;
-  fill: var(--very-dark-blue);
+  fill: black;
 }
 .theme-switch svg:last-child{
   display: none;

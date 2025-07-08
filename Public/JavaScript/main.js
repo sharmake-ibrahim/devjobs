@@ -5,33 +5,101 @@
 
 
 
-const display_jobs = (records)=> {
-    
-  
-      
-const Jobs_section = document.querySelector(".jobs-section")
-const InputTxt = document.querySelector(".input-txt")
+
+const handleDetailsPage = (data)=> {
+           
+     const DivJobs = document.querySelectorAll(".job-div");
+
+            const details_content = document.querySelector(".detials-content");
+            const job_header = document.querySelector(".job-header");
+            const footer_content = document.querySelector(".footer-content");
+
+     
+
+
+            DivJobs.forEach((Element, index)=> {
+
+                let view_job = data.find((_, i)=> i === index);
 
 
 
-
-
-
-
-
-  
-
-
+                Element.addEventListener("click", ()=> {
+                 
  
 
-          const renderJobs = ()=> {
+                            job_header.innerHTML = `
+                                <div class="logo">
+                                    <img src="${view_job.logo}" alt="">
+                                </div>
+                                    <div class="txt">
+                                        <strong>${view_job.company}</strong>
+                                        <p>scoot.com</p>
+                                    </div>
+
+                                        <a href="${view_job.website}" class="details-btn">Company Site</a>
+                                `
+
+                                details_content.innerHTML = `
+                                    <div class="job-desc">
+                                            <div class="flex">
+                                                <p>${view_job.postedAt}</p>
+                                                <li>${view_job.contract}</li>
+                                            </div>
+
+                                            <div class="job-txt">
+                                                <h1>${view_job.position}</h1>
+                                                <a href="${view_job.apply}" class="details-btn"> Apply Now</a>
+                                            </div>
+                                            <p class="location">${view_job.location}</p>
+                                        </div>
+
+                                        <article>
+                                            <p>${view_job.description}</p>
+                                        </article>
+
+                                        <ul class="info-one"> 
+                                            <strong>Requirements</strong>
+                                            <p>${view_job.requirements.content}</p>
+                                        
+                                            ${view_job.requirements.items.map(item => `<li>${item}</li>`).join('')}
+                                        </ul>
+                                        <ol class="info-two"> 
+                                            <strong>What You Will Do</strong>
+                                            <p>${view_job.role.content}</p>
+                                
+                                            ${view_job.role.items.map(item => `<li>${item}</li>`).join('')}
+                                        </ol>
+                                
+                                
+                                `
+                                    footer_content.innerHTML = `
+                                    <div class="position">
+                                
+                                        <h1 >${view_job.position}</h1>
+                                                <p>${view_job.location}</p>
+                                            </div>
+                                            <a href="${view_job.apply}" class="details-btn">Apply Now</a>
+                                            </div>
+                                    `
+    });
+            
+                    
+    
+    })
+
+    }
+
+
+
+       const renderJobs = (records)=> {
+              const Jobs_section = document.querySelector(".jobs-section");
             let jobHtml = ""
               records.forEach((job)=> {
               
                             jobHtml += `
                             <div class="job-div">
-                                <a href="component.html" class="details-btn">
-                                    <img src=${job.logo} alt="">
+                                <a href="component.html" target="_self">
+                                    <div class="job-logo" style="background:${job.logoBackground}"> <img src=${job.logo} alt=""></div>
                                         <div class="time-job-type">
                                             <p>${job.postedAt}</p>
                                             <li>${job.contract}</li>
@@ -47,28 +115,40 @@ const InputTxt = document.querySelector(".input-txt")
                 })
 
           
+              if(!Jobs_section) {
+                    console.error("Critical elements not found in DOM");
+                    return;
+              } 
               
             Jobs_section.innerHTML = jobHtml;
-            handleDetailsPage(records);
+                   handleDetailsPage(records);
             }
 
 
 
 
-           
+
+
+
+        
+                const display_jobs = (records)=> {
+
+        const Jobs_section = document.querySelector(".jobs-section");
+     const InputTxt = document.querySelector(".input-txt")
+
      const handleSearchingJobs = () => {
     const Div_jobs = document.getElementsByClassName("job-div");
     let inputValue = InputTxt.value.toLowerCase();
     let matchFound = false;
 
     if(inputValue === "") {
-        renderJobs();
+        renderJobs(records);
         return;
     }
 
 
     for (let i = 0; i < Div_jobs.length; i++) {
-        const jobText = Div_jobs[i].innerHTML.toLowerCase();
+        const jobText = Div_jobs[i].innerText.toLowerCase();
         if (!jobText.includes(inputValue)) {
             Div_jobs[i].style.display = "none";
         } else {
@@ -81,132 +161,58 @@ const InputTxt = document.querySelector(".input-txt")
          Jobs_section.innerHTML = `<h1>Not Found</h1>`;
        setTimeout(()=> {
           Jobs_section.innerHTML = `<h1></h1>`;
-                inputValue.value = ""
-                renderJobs()
+             
+                renderJobs(records)
        },2000);
        
        
 
-    } else {
-      renderJobs()
-    }
+    } 
 
 
     return inputValue = ""
 };
 
 
-renderJobs()
-
-
-InputTxt.addEventListener("keyup", handleSearchingJobs);
 
 
 
+    renderJobs(records)
 
 
- }
+    InputTxt?.addEventListener("keyup", handleSearchingJobs);
 
 
 
 
+}
 
 
-
-
-
- 
-
- const handleDetailsPage = (data)=> {
-            const DivJobs = document.querySelectorAll(".job-div");
-            const details_content = document.querySelector(".detials-content");
-            const job_header = document.querySelector(".job-header");
-            const footer_content = document.querySelector(".footer-content");
+       
 
 
 
 
 
-            DivJobs.forEach((Element, index)=> {
-
-                let view_job = data?.find((_, i)=> i === index);
-                
-                
-
-                Element.addEventListener("click", ()=> {
-                
-                console.log("Hello", view_job)
-                    
-                job_header.innerHTML = `
-                <div class="logo">
-                    <img src="${view_job.logo}" alt="">
-                </div>
-                    <div class="txt">
-                        <strong>${view_job.company}</strong>
-                        <p>scoot.com</p>
-                    </div>
-
-                        <a href="${view_job.website}" class="details-btn">Company Site</a>
-                `
-
-                details_content.innerHTML = `
-                    <div class="job-desc">
-                            <div class="flex">
-                                <p>${view_job.postedAt}</p>
-                                <li>${view_job.contract}</li>
-                            </div>
-
-                            <div class="job-txt">
-                                <h1>${view_job.position}</h1>
-                                <a href="${view_job.apply}" class="details-btn"> Apply Now</a>
-                            </div>
-                            <p class="location">${view_job.location}</p>
-                        </div>
-
-                        <article>
-                            <p>${view_job.description}</p>
-                        </article>
-
-                        <ul class="info-one"> 
-                            <strong>Requirements</strong>
-                            <p>${view_job.requirements.content}</p>
-                        
-                            ${view_job.requirements.items.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                        <ol class="info-two"> 
-                            <strong>What You Will Do</strong>
-                            <p>${view_job.role.content}</p>
-                
-                            ${view_job.role.items.map(item => `<li>${item}</li>`).join('')}
-                        </ol>
-                
-                
-                `
-                    footer_content.innerHTML = `
-                    <div class="position">
-                
-                        <h1 >${view_job.position}</h1>
-                                <p>${view_job.location}</p>
-                            </div>
-                            <a href="${view_job.apply}" class="details-btn">Apply Now</a>
-                            </div>
-                    `
-                })
-      })
-    }
+      
 
 
+
+
+   document.addEventListener("DOMContentLoaded", () => {
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        display_jobs(data)
+    })
+    .catch(error => console.error('Error loading JSON:', error));
+});
 
 
 
     
-fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
 
-    display_jobs(data)
-    
-  })
-  .catch(error => console.error('Error loading JSON:', error));
+
+
 
 
