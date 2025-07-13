@@ -228,7 +228,6 @@ main .btn  {
   width: 40px;
   display: grid;
   place-items: center;
-  background-color: red;
   border-radius: 10px;
 }
 .time-job-type {
@@ -280,12 +279,14 @@ padding: 10px 15px;
 footer {
   height: 100px;
   min-width: 100%;
+  display: grid;
+  place-items: center;
   background-color: var(--very-dark-blue);
 }
 
 .footer-content {
 
-  max-width: 69.375em;
+  min-width: 69.375em;
   color: var(--white);
   display: flex;
   justify-content: space-around;
@@ -295,14 +296,16 @@ footer {
  
 }
 
-.footer-content .btn{
-  background-color: var(--blue-color);
-  padding: 10px 15px;
+.footer-content a{
+   text-decoration: none;
+    background-color: var(--light-violet);
+  padding: 5px 15px;
   color: var(--white);
   border-radius: 5px;
   width: 100px;
   text-align: center;
-  font-size: clamp(15px, 2vw, 1rem);
+  font-size:  15px;
+  margin-right: 15px;
   
 }
 
@@ -392,9 +395,8 @@ footer {
 
 .job-header {
   margin: 2em 0;
-  max-height: 100px;
-  min-width: 50%;
-  max-width: 70em;
+  max-height: 140px;
+  min-width: 689px;
   margin-top: -4.5rem;
   background-color: var(--very-dark-blue);
   display: flex;
@@ -409,13 +411,17 @@ footer {
 
 
 .job-header .logo img {
-  height: 100px;
-  width: 100px;
-  object-fit: cover;
+  height: 23px;
+  width: 81px;
+  object-fit: contain;
 }
 
+  .job-header .logo {
+    padding: 2em 20px;
+    border-radius: 10px 0 0 10px;
+  }
 
-.detials-btn {
+/* .detials-btn {
    background-color: var(--blue-color);
   padding: 10px 15px;
   color: var(--white);
@@ -423,12 +429,12 @@ footer {
   width: 100px;
   text-align: center;
   font-size: clamp(15px, 2vw, 1rem);
-}
+} */
 
 .job-header a {
 
   text-decoration: none;
-    background-color: var(--dark-grey);
+    background-color: var(--light-violet);
   padding: 5px 15px;
   color: var(--white);
   border-radius: 5px;
@@ -443,7 +449,7 @@ footer {
 
 .txt strong {
   color: var(--white);
-}
+}  
 
 .txt p {
   color: var(--clr-txt);
@@ -547,6 +553,13 @@ footer {
 }
 
 .info-one li {
+  font-size: 16px;
+  color: var(--clr-txt);
+  padding: 3px;
+  
+}
+
+.info-two li{
   font-size: 16px;
   color: var(--clr-txt);
   padding: 3px;
