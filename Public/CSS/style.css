@@ -95,7 +95,8 @@ z-index: 1;
 header {
   display: flex;
   justify-content: space-between;
-  padding: 0 2em;
+
+  padding: 2em 2em;
   column-gap: clamp(2em, 4vw, 3em);
 }
 .header-bg-img {
@@ -288,11 +289,13 @@ footer {
 
   min-width: 69.375em;
   color: var(--white);
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(2, 1.1fr);
+  place-items: center;
   align-items: center;
   font-size: 1rem;
   padding: 1em 2rem;
+
  
 }
 
@@ -396,13 +399,12 @@ footer {
 .job-header {
   margin: 2em 0;
   max-height: 140px;
-  min-width: 689px;
+  min-width: 55%;
   margin-top: -4.5rem;
   background-color: var(--very-dark-blue);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  column-gap: 15px;
   border-radius: 10px;
   position: relative;
   z-index: 2;
