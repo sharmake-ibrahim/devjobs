@@ -143,7 +143,13 @@ html, body {
   display: flex;
   align-items: center;
   min-width: 60%;
+ 
 
+}
+
+.searchBox input {
+  min-width: 300px;
+   border: 2px solid red;
 }
 
 
